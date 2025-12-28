@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ProfileInfo from "../components/ProfileCard";
 
 import RepoSection from "../components/RepoSection";
+import DeveloperVibes from "../components/DeveloperVibes";
+import LanguageChart from "../components/LanguageChart";
 
 type ApiResponse = {
   profile: any;
@@ -10,6 +12,7 @@ type ApiResponse = {
 };
 
 function Analyze() {
+  const navigate = useNavigate();
   const { username } = useParams();
   const [data, setData] = useState<ApiResponse | null>(null);
   const [loading, setLoading] = useState(true);
@@ -38,6 +41,10 @@ function Analyze() {
   return (
     <div className="min-h-screen bg-neutral-900 text-white">
       <ProfileInfo profile={data.profile} />
+      <div className="max-w-4xl mx-auto px-6">
+        <DeveloperVibes profile={data.profile} repos={data.repos} />
+        <LanguageChart repos={data.repos} />
+      </div>
       <RepoSection repos={data.repos} />
     </div>
   );

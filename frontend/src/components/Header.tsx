@@ -9,7 +9,8 @@ function Header() {
           AnalyXer
         </h1>
         <h2 className="text-sm tracking-wide opacity-90">
-          Analyze Any Twitter Profile
+          “Every commit leaves a trace. We decode your GitHub and reveal your
+          fictional counterpart.”
         </h2>
       </header>
     </div>

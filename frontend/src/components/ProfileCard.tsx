@@ -1,3 +1,6 @@
+import { useNavigate, useParams } from "react-router-dom";
+import Header from "./Header";
+
 type Props = {
   profile: {
     name: string;
@@ -13,40 +16,61 @@ type Props = {
 
 const ProfileInfo = ({ profile }: Props) => {
   if (!profile) return null;
+  const { username } = useParams();
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate(`/alter-ego/${username}`);
+  };
   return (
-    <div className="w-full bg-black/70 py-10 flex flex-col items-center">
-      <a href={profile.html_url} target="_blank" rel="noreferrer">
-        <img src={profile.avatar_url} className="w-24 h-24 rounded-full mb-3" />
-      </a>
-
-      <h2 className="text-2xl font-bold">{profile.name}</h2>
-
-      <div className="flex gap-6 text-sm pt-3">
-        <span>Followers: {profile.followers}</span>
-        <span>Following: {profile.following}</span>
-      </div>
-
-      {profile.bio && (
-        <p className="pt-4 max-w-xl text-center text-sm text-white/80">
-          {profile.bio}
-        </p>
-      )}
-
-      {profile.twitter_username && (
-        <a
-          href={`https://x.com/${profile.twitter_username}`}
-          target="_blank"
-          rel="noreferrer"
-          className="pt-3 text-blue-400 text-sm"
-        >
-          @{profile.twitter_username}
+    <>
+      <div className="w-full bg-black/70 py-10 flex flex-col items-center ">
+        <Header />
+        <a href={profile.html_url} target="_blank" rel="noreferrer">
+          <img
+            src={profile.avatar_url}
+            className="w-24 h-24 rounded-full mb-3 mt-3"
+          />
         </a>
-      )}
 
-      {profile.location && (
-        <p className="pt-3 text-xs text-white/70">{profile.location}</p>
-      )}
-    </div>
+        <h2 className="text-2xl font-bold">{profile.name}</h2>
+
+        <div className="flex gap-6 text-sm pt-3">
+          <span>Followers: {profile.followers}</span>
+          <span>Following: {profile.following}</span>
+        </div>
+
+        {profile.bio && (
+          <p className="pt-4 max-w-xl text-center text-sm text-white/80">
+            {profile.bio}
+          </p>
+        )}
+
+        {profile.twitter_username && (
+          <a
+            href={`https://x.com/${profile.twitter_username}`}
+            target="_blank"
+            rel="noreferrer"
+            className="pt-3 text-blue-400 text-sm"
+          >
+            @{profile.twitter_username}
+          </a>
+        )}
+
+        {profile.location && (
+          <p className="pt-3 text-xs text-white/70">{profile.location}</p>
+        )}
+
+        <div className="pt-10">
+          <button
+            onClick={handleButtonClick}
+            className="bg-white text-black h-12 text-sm font-semibold w-35 rounded-3xl cursor-pointer"
+          >
+            See Your Alter Ego
+          </button>
+        </div>
+      </div>
+    </>
   );
 };
 

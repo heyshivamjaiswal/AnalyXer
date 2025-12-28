@@ -1,11 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.tsx";
+import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Body from "./pages/Body.tsx";
-import Analyze from "./pages/Analyze.tsx";
-import Home from "./pages/Home.tsx";
+import Body from "./pages/Body";
+import Analyze from "./pages/Analyze";
+import Home from "./pages/Home";
+import AlterEgo from "./components/AlterEgo";
 
 const appRouter = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const appRouter = createBrowserRouter([
         children: [
           { index: true, element: <Home /> },
           { path: "analyze/:username", element: <Analyze /> },
+          { path: "alter-ego/:username", element: <AlterEgo /> }, // 🔥 ADD THIS
         ],
       },
     ],
