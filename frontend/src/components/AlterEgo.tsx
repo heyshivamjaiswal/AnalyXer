@@ -8,7 +8,7 @@ type ParsedResult = {
   why: string;
   analysis: string;
 };
-
+  
 function parseAIText(text?: string): ParsedResult {
   if (!text) {
     return {
