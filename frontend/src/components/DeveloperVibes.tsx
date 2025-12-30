@@ -11,7 +11,7 @@ function getVibes(repos: any[], profile: any) {
   if (repos.some((l) => l.updated_at?.includes("T02"))) vibes.push("Night Owl");
   if (profile.followers > profile.following) vibes.push("Quiet Builder ");
   if (vibes.length === 0) vibes.push("Focused Developer");
-
+ 
   return vibes;
 }
 
