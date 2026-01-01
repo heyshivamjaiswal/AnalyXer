@@ -8,7 +8,7 @@ export const getUserProfileAndRepos = async (req: Request, res: Response) => {
     };
 
     const userRes = await fetch(`https://api.github.com/users/${username}`, {
-      headers,
+      headers,  
     });
 
     if (!userRes.ok) {
