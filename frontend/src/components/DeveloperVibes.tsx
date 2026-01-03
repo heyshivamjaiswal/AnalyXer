@@ -1,6 +1,6 @@
 type Props = {
   repos: any[];
-  profile: any;
+  profile: any;    
 };
 
 function getVibes(repos: any[], profile: any) {
